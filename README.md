@@ -109,3 +109,46 @@ pip3 install matplotlib==3.5.0
 ```sh
 pip3 freeze
 ```
+
+## Requirements.txt 
+>[!IMPORTANT]
+> 
+> **Archivo que gestiona todas las dependencias y en que versiones se necesitan.**
+
+1. Generar el archivo con el siguiente comando
+```sh
+pip3 freeze > requirements.txt
+```
+
+2. Revisar lo que hay dentro del archivo
+```sh
+cat requirements.txt
+```
+
+3. Instalar las dependencias necesarias para contribuir más rápido en proyectos
+
+```sh
+pip3 install -r requirements.txt
+```
+
+## Add Project
+**Con base en lo anterior, añadir el proyecto en un nuevo ambiente clonando el repositorio**
+```sh
+# Clona el repositorio de GitHub a tu máquina local
+git clone
+
+# Cambia al directorio del proyecto
+cd app
+
+# Crea un entorno virtual de Python
+python3 -m venv env
+
+# Activa el entorno virtual
+source env/bin/activate
+
+# Instala las dependencias del proyecto
+pip3 install -r requirements.txt
+
+# Ejecuta el programa principal
+python3 main.py
+```
