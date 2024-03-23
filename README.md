@@ -69,6 +69,7 @@ Aquí es donde los entornos virtuales son útiles. **Puedes crear un entorno vir
 
 - Ofrecen una forma conveniente y segura de utilizar diferentes aplicaciones y tecnologías en un mismo equipo
 
+
 ## Creando un `venv` "*Entorno Virtual*"
 Coamandos a implementar para saber el curso del entorno virtual
 1. Verificar donde esta `python` y `pip`
@@ -95,19 +96,22 @@ python3 -m venv <name_env>
 source <name_env>/bin/activate
 ```
 
-5. Salir del ambiente virtual
-```sh
-deactivate
-```
-
-6. Podemos instalar las librerias necesarias en el ambiente virtual como por ejemplo
+5. Podemos instalar las librerias necesarias en el ambiente virtual como por ejemplo
 ```sh
 pip3 install matplotlib==3.5.0
 ```
+> [!IMPORTANT]
+>
+> Luego de haber realizado la instalación de las diferentes librerias y modulos en sus versiones correspondientes dentro del entorno, **se requerira seleccionar un interprete de python compatible con las versiones**, _en el caso que se desarrolle dentro del entorno de VSCode este lo solicitara automaticamente para solucionar los errores_.
 
-7. Verificar las instalaciones
+6. Verificar las instalaciones
 ```sh
 pip3 freeze
+```
+
+7. Salir del ambiente virtual
+```sh
+deactivate
 ```
 
 ## Requirements.txt 
