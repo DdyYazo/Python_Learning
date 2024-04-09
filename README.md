@@ -123,13 +123,16 @@ deactivate
 ```sh
 pip3 freeze > requirements.txt
 ```
+> [!NOTE]
+>
+> Antes de ejecutar este comando es importante tener en cuenta que **las librerias deseadas ya debem estar instaladas y verificadas con el comando `pip3 freeze` el entorno.**
 
-2. Revisar lo que hay dentro del archivo
+1. Revisar lo que hay dentro del archivo
 ```sh
 cat requirements.txt
 ```
 
-3. Instalar las dependencias necesarias para contribuir más rápido en proyectos
+1. Instalar las dependencias necesarias para contribuir más rápido en proyectos
 
 ```sh
 pip3 install -r requirements.txt
@@ -155,4 +158,37 @@ pip3 install -r requirements.txt
 
 # Ejecuta el programa principal
 python3 main.py
+```
+
+## Solicitudes HTTP con Requests
+
+La librería `requests` en Python **es una biblioteca para hacer solicitudes HTTP.** Es una de las bibliotecas más populares en Python para hacer solicitudes HTTP debido a su simplicidad y facilidad de uso.
+
+- **Con requests, puedes enviar solicitudes HTTP de todos los tipos, como `GET`, `POST`, `PUT`, `DELETE` y más.** 
+
+- También puedes manejar detalles como parámetros de consulta, encabezados HTTP, formularios, archivos multipartes y sesiones.
+
+### Instalación de la libreria `requests` en un `venv` de Python
+
+Luego de haber creado un `venv` tomando de base las indicaciones antes  mencionadas, basta con digitar el siguiente comando:
+
+```sh
+pip install requests
+```
+
+Al instalarse se sigue el mismo procedimiento para almacenar las librerias en el `requeriments.txt` del directorio y poder hacer solicitudes HTTP
+
+- En el siguiente ejemplo se realiza una solicitud GET a una API de productos **[Platzi Fake Store API](https://fakeapi.platzi.com)** para traer los sets de datos en formato de diccionario para luego pasarlo a formato JSON
+
+```python
+import requests
+
+def get_categories():
+    r = requests.get('https://api.escuelajs.co/api/v1/categories') # Se establece la conexión con la API usando el metodo GET
+    print(r.status_code) # Se imprime el estado de la conexión
+    print(r.text) # Se imprime el contenido de la conexión
+    print(type(r.text)) # Se imprime el tipo de dato de la conexión
+    categories = r.json() # Se convierte el contenido de la conexión a un objeto JSON
+    for category in categories:
+        print(category['name']) # Se imprime el nombre de cada categoría
 ```
