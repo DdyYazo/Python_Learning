@@ -192,3 +192,20 @@ def get_categories():
     for category in categories:
         print(category['name']) # Se imprime el nombre de cada categoría
 ```
+> [!TIP]
+>
+> **Es buena practica declarar la URL de la URl de la que se hace la solicitud en una variable o incluso se pueden guardar en un unico archivo e importarlo cuando se requiera establecer una solicitud**
+
+```python
+import requests
+
+api_url_categories = 'https://api.escuelajs.co/api/v1/categories'
+
+def get_categories():
+      r = requests.get(api_url_categories) # Se establece la requests.get(api_url_categories)
+      print(f'Status code: {r.status_code}')
+      print(f'Text: {r.text}')
+      print(f'type: {type(r.text)}')
+```
+
+
