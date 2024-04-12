@@ -209,3 +209,55 @@ def get_categories():
 ```
 
 
+## Uso de la libreria `pandas` en Python
+
+La librería `pandas` en Python es una biblioteca de código abierto que proporciona estructuras de datos de alto rendimiento y fáciles de usar, así como herramientas de análisis de datos.
+
+- Es fundamental para la manipulación y el análisis de datos en Python, y es una de las bibliotecas más utilizadas en ciencia de datos y análisis de datos.
+
+### Aplicaciones y usos de la libreria `pandas` en Python
+
+- **Manipulación de datos**: puedes cambiar la forma de los datos, pivotarlos, dividirlos, etc.
+
+- **Limpieza de datos**: puedes tratar con datos faltantes, filtrar datos, etc.
+
+- **Análisis de datos**: puedes agrupar datos, calcular estadísticas descriptivas, etc.
+
+### Instalación de la libreria `pandas` en un `venv` de Python
+
+Para llevar a cabo la instalación de la librería `pandas` en un `venv` de Python, se debe ejecutar el siguiente comando:
+
+```sh
+pip install pandas
+```
+
+Al instalarse se sigue el mismo procedimiento para almacenar las librerias en el `requeriments.txt` 
+
+### Ejemplos de uso de la libreria `pandas` en Python
+
+1. Crear un DataFrame (la estructura de datos principal de pandas) a partir de un diccionario de Python
+
+```python
+import pandas as pd
+data = {
+    'name': ['John', 'Anna', 'Peter', 'Linda'],
+    'age': [25, 36, 29, 42],
+    'city': ['New York', 'Paris', 'Berlin', 'London']
+}
+df = pd.DataFrame(data)
+print(df)
+```
+
+2. Calcular estadísticas descriptivas
+
+```python
+import pandas as pd
+
+df = pd.read_csv('data.csv')
+filtered_df = df[df['age'] > 30]
+print(filtered_df.describe())
+```
+
+> [!NOTE]
+>
+> **La biblioteca es muy poderosa y flexible, y puede manejar una amplia variedad de tareas de manipulación y análisis de datos**.
