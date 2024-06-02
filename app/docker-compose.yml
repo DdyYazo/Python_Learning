@@ -1,0 +1,5 @@
+services: #servicios que se van a ejecutar
+ app-csv: #nombre del servicio
+  build: #construir la imagen
+   context: . #contexto de la imagen o la carpeta donde se encuentra el dockerfile
+   dockerfile: Dockerfile #archivo dockerfile

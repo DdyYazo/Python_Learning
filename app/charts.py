@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def generate_bar_chart(name, labels, values):
     fig, ax = plt.subplots()
     ax.bar(labels, values)
-    plt.savefig(f'/root/platziCourses/Python_Courses/python-pip-environment/app/imgs/{name}.png')
+    plt.savefig(f'./imgs/{name}.png')
     plt.close()
 
 

@@ -1,6 +1,43 @@
 # python-pip-environment
 Esta es una recopilación de las utilidades y comandos implementados para pip y entornos virtuales de python
 
+# Tabla de contenido
+
+- [python-pip-environment](#python-pip-environment)
+- [Tabla de contenido](#tabla-de-contenido)
+- [1. Comandos Iniciales para la instalación de paquetes y entornos para Python](#1-comandos-iniciales-para-la-instalación-de-paquetes-y-entornos-para-python)
+  - [Instalación en Windows con WSL](#instalación-en-windows-con-wsl)
+  - [Flujo de trabajo en python](#flujo-de-trabajo-en-python)
+    - [main.py: Game Project](#mainpy-game-project)
+- [2. PIP y Entornos Virtuales](#2-pip-y-entornos-virtuales)
+  - [2.1. ¿Que es pip?](#21-que-es-pip)
+  - [2.2. ¿Que es un entorno o ambiente virtual?](#22-que-es-un-entorno-o-ambiente-virtual)
+    - [Ejemplo de un `venv` "Virtual Environment"](#ejemplo-de-un-venv-virtual-environment)
+    - [Caracteristicas de los `venv`](#caracteristicas-de-los-venv)
+  - [2.3. Creando un `venv` "*Entorno Virtual*"](#23-creando-un-venv-entorno-virtual)
+  - [2.4. Requirements.txt](#24-requirementstxt)
+  - [2.5. Add Project](#25-add-project)
+  - [2.6. Solicitudes HTTP con Requests](#26-solicitudes-http-con-requests)
+    - [Instalación de la libreria `requests` en un `venv` de Python](#instalación-de-la-libreria-requests-en-un-venv-de-python)
+    - [Solicitudes POST a una API fake con `requests`](#solicitudes-post-a-una-api-fake-con-requests)
+  - [2.7. Uso de la libreria `pandas` en Python](#27-uso-de-la-libreria-pandas-en-python)
+    - [Aplicaciones y usos de la libreria `pandas` en Python](#aplicaciones-y-usos-de-la-libreria-pandas-en-python)
+    - [Instalación de la libreria `pandas` en un `venv` de Python](#instalación-de-la-libreria-pandas-en-un-venv-de-python)
+    - [Ejemplos de uso de la libreria `pandas` en Python](#ejemplos-de-uso-de-la-libreria-pandas-en-python)
+  - [2.8. Uso de la libreria `FastAPI` en Python](#28-uso-de-la-libreria-fastapi-en-python)
+    - [Aplicaiones y usos de la libreria `FastAPI` en Python](#aplicaiones-y-usos-de-la-libreria-fastapi-en-python)
+    - [Instalación de la libreria `FastAPI` en un `venv` de Python](#instalación-de-la-libreria-fastapi-en-un-venv-de-python)
+    - [Ejemplos de uso de la libreria `FastAPI` en Python](#ejemplos-de-uso-de-la-libreria-fastapi-en-python)
+- [3. Python en contenedores de Docker](#3-python-en-contenedores-de-docker)
+  - [3.1. ¿Qué es Docker?](#31-qué-es-docker)
+    - [De que manera se aislan los diferentes scrips de python en contenedores Docker](#de-que-manera-se-aislan-los-diferentes-scrips-de-python-en-contenedores-docker)
+  - [3.2. Instalación de Docker en Windows Subsystem for Linux (WSL)](#32-instalación-de-docker-en-windows-subsystem-for-linux-wsl)
+  - [3.3 Dockerización de scripts de Python](#33-dockerización-de-scripts-de-python)
+      - [1. Crear un archivo `Dockerfile` en el directorio del proyecto](#1-crear-un-archivo-dockerfile-en-el-directorio-del-proyecto)
+      - [2. Crear el archivo `docker-compose.yml` en el directorio del proyecto](#2-crear-el-archivo-docker-composeyml-en-el-directorio-del-proyecto)
+      - [3. Poner en marcha el contenedor](#3-poner-en-marcha-el-contenedor)
+
+--- 
 
 # 1. Comandos Iniciales para la instalación de paquetes y entornos para Python
 
@@ -29,6 +66,7 @@ sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
 cd game
 python3 main.py
 ```
+--- 
 
 # 2. PIP y Entornos Virtuales
 
@@ -271,7 +309,7 @@ print(filtered_df.describe())
 
 ## 2.8. Uso de la libreria `FastAPI` en Python
 
-La librería `FastAPI` es un Framework web moderno y rápido para la creación de API web con Python 3.6+. Utiliza la mejor OpenAPI y JSON Schema para la validación de datos y la documentación automática.
+La librería **[FastAPI](https://fastapi.tiangolo.com/#installation)** es un Framework web moderno y rápido para la creación de API web con Python 3.6+. Utiliza la mejor OpenAPI y JSON Schema para la validación de datos y la documentación automática.
 
 - **Es fácil de usar y aprender**, y proporciona una gran cantidad de características y funcionalidades útiles para la creación de API web.
 
@@ -334,7 +372,7 @@ uvicorn main:app --reload
 ```
 > **de esta manera se podra visualizar la API en el navegador web**. Ademas **el parametro `--reload` permite que el servidor se reinicie automáticamente cuando se realicen cambios en el código**.
 
-2. Crear una API web que muestre una estructura HTML
+2. Crear una API web que muestre una estructura HTML usando el modulo **[HTMLResponse](https://fastapi.tiangolo.com/advanced/custom-response/#html-response)** de FastAPI
 
 ```python
 from fastapi import FastAPI
@@ -355,3 +393,159 @@ if __name__ == '__main__':
 
 > [!NOTE]
 > Esta biblioteca es bastante practica para la creación de API web, ya que permite **crear API web rápidas y modernas con Python, además de proporcionar una gran cantidad de características y funcionalidades útiles para la creación de API web.**
+
+--- 
+
+# 3. Python en contenedores de Docker
+
+## 3.1. ¿Qué es Docker?
+
+Docker es una plataforma de código abierto que permite a los desarrolladores empaquetar, enviar y ejecutar aplicaciones en contenedores. Los contenedores son entornos ligeros y portátiles que contienen todo lo necesario para ejecutar una aplicación, incluidas las bibliotecas, las dependencias y el código.
+
+- **Docker es una herramienta muy útil para los desarrolladores**, ya que les permite crear entornos de desarrollo consistentes y reproducibles, y les permite ejecutar aplicaciones en cualquier lugar, desde su máquina local hasta la nube.
+
+
+### De que manera se aislan los diferentes scrips de python en contenedores Docker
+
+<p align="center">
+  <img src="https://i.postimg.cc/RCpb7xm2/imagen-2024-05-30-171619676.png" alt="Aquí va el texto del enlace">
+</p>
+
+- **Cada contenedor de Docker es una instancia aislada de una imagen de Docker**. Una imagen de Docker es un paquete que contiene todo lo necesario para ejecutar una aplicación, incluidas las bibliotecas, las dependencias y el código.
+
+- **Cada contenedor de Docker se ejecuta en un entorno aislado y seguro**, lo que significa que no puede acceder a los recursos de otros contenedores o del sistema operativo subyacente.
+
+<p align="center">
+  <img src="https://i.postimg.cc/Vk4dZgNr/imagen-2024-05-30-183302276.png" alt="Aquí va el texto del enlace">
+</p>
+
+## 3.2. Instalación de Docker en Windows Subsystem for Linux (WSL)
+
+Para instalar Docker en Windows Subsystem for Linux (WSL), **se pueden seguir los pasos del siguiente video**.
+
+<p align="center">
+    <a href="https://youtu.be/ZO4KWQfUBBc">
+        <img src="https://i.postimg.cc/bYbfwvk3/imagen-2024-05-30-181020635.png" alt="Imagen" width="400">
+    </a>
+</p>
+
+**Ademas es importante tener en cuenta los siguientes recursos:**
+
+1. Instalador desde la página de **[Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)**.
+
+2. Consultar la **[documentación oficial de Docker](https://docs.docker.com/desktop/wsl/)** para algunas configuraciones para WSL.
+
+## 3.3 Dockerización de scripts de Python
+
+> [!IMPORTANT]
+>
+> Antes de comenzar con la dockerización de los scripts de Python, es importante tener en cuenta que **se debe tener instalado y corriendo Docker en la máquina local** y ademas que los archivos que se desean dockerizar cumplan con la version de compatibilidad de Python. 
+
+Para llevar a cabo la dockerización de los scripts de Python, se deben seguir los siguientes pasos:
+
+#### 1. Crear un archivo `Dockerfile` en el directorio del proyecto
+
+Dicho archivo contendrá las instrucciones necesarias para construir la imagen del contenedor. A continuación se muestra un ejemplo de un archivo `Dockerfile` para un script de Python
+
+```Dockerfile
+
+FROM python:3.9-slim
+WORKDIR /app
+COPY requirements.txt /app/requeriments.txt 
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY . /app
+CMD bash -c "while true; do sleep 1; done"
+``` 
+
+***Explicación del codigo de configuración del archivo `Dockerfile`***
+
+- **Primera linea:** Selecciona la imagen base de Python 3.9 en su versión slim.
+
+- **Segunda linea:** Especifica el directorio de trabajo en el contenedor.
+
+- **Tercera linea:** Copia el archivo `requirements.txt` del proyecto al contenedor y asi mismo se especifica la carpeta de destino.
+
+- **Cuarta linea:** Instala las dependencias del proyecto en el contenedor y ademas se omite el cache para evitar problemas de compatibilidad, por otro lado, tambien se actializando las dependencias.
+
+- **Quinta linea:** Copia todos los archivos del proyecto al contenedor.
+
+- **Sexta linea:** Ejecuta un comando bash para mantener el contenedor en ejecución.
+
+> [!TIP]
+>
+> Una buena practica al momento de copiar los archivos del proyecto que se desean dockerizar es **copiar las dependencias `requirements.txt` al contenedor, especificando al lado izquierdo la carpeta local y al lado derecho la carpeta del contenedor**.
+>
+> - Tambien es importante **especificar la ejecución del contenedor mediante el comando `CMD` para mantenerlo en ejecución, siendo clave para que el archivo `docecfile` funcione correctamente.**
+
+#### 2. Crear el archivo `docker-compose.yml` en el directorio del proyecto
+
+El archivo `docker-compose.yml` contendrá las instrucciones necesarias para construir y ejecutar el contenedor. A continuación se muestra un ejemplo de un archivo `docker-compose.yml` para un script de Python.
+
+```yml
+services: 
+ app-csv: 
+  build: 
+   context: . 
+   dockerfile: Dockerfile 
+```
+
+***Explicación del codigo de configuración del archivo `docker-compose.yml`***
+
+   - **Primera linea:** Se especifica el servicio que se desea dockerizar.
+
+  - **Segunda linea:** Se especifica el nombre del servicio.
+
+  - **Tercera linea:** Se lleva a cabo la construcción de la imagen o servicio. 
+
+  - **Cuarta linea:** Se especifica el contexto del proyecto desde se esta ejecutando el archivo `Dockerfile`. En este caso el directorio actual.
+
+  - **Quinta linea:** Se especifica el archivo `Dockerfile` que se desea utilizar, es importante indicar la linea de codigo `CMD` para mantener el contenedor en ejecución.
+
+#### 3. Poner en marcha el contenedor
+
+Para poner en marcha el contenedor, se deben seguir los siguientes pasos:
+
+1. **Construir la imagen del contenedor** con el siguiente comando:
+
+```sh
+docker-compose build
+```
+
+2. **Iniciar o levantar el contenedor** con el siguiente comando:
+
+```sh
+docker-compose up -d
+# la bandera -d permite que el contenedor se ejecute en segundo plano
+```
+
+3. **Verificar que el contenedor se encuentra en ejecución** con el siguiente comando:
+
+```sh
+docker-compose ps
+```
+> [!NOTE]
+>
+> Es importante verificar que el `STATUS` **indique que el contenedor se encuentra en ejecución.**
+
+4. Luego de haber ejecutado los comandos anteriores, **se puede acceder o ejecutar el contenedor** con el siguiente comando:
+
+```sh
+docker-compose exec app-csv bash
+```
+
+ - Para salir del contenedor se debe ejecutar el comando `exit`.
+
+> [!IMPORTANT]
+>
+> Si por algun motivo se identifico una incongruencia en el contenedor, se debe volver a construir la imagen del contenedor con el comando `docker-compose build` y luego detener el contenedor que esta en ejecución con el comando `docker-compose down`. Para luego posteriormente volver a levantar el contenedor con el comando `docker-compose up -d`.
+
+5. Para **detener el contenedor**, se debe ejecutar el siguiente comando:
+
+```sh
+docker-compose down
+```
+
+
+
+
+

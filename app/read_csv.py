@@ -37,5 +37,5 @@ def read_csv(path):
         return data
 
 if __name__ == '__main__':
-  data = read_csv('/root/platziCourses/Python_Courses/python_Compre_Funct_Err-Hand/Mod_6_Python_Charts/30_chall_chart-csv/data.csv')
+  data = read_csv('./app/data.csv')
   print(data[0])

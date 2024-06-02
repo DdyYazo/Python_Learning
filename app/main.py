@@ -17,7 +17,7 @@ def run():
 
     '''
     # Analisis y visualizacion de datos mediante la libreia pandas y matplotlib
-    df = pd.read_csv("data.csv")
+    df = pd.read_csv('data.csv')
     df = df[df["Continent"] == "Africa"]# En esta caso se usa el filtro para obtener los paises de Sudamerica
     
     countries = df["Country/Territory"].values
@@ -25,7 +25,7 @@ def run():
     
     charts.generate_pie_chart(countries, percentages)
     
-    data = read_csv.read_csv("/root/platziCourses/Python_Courses/python-pip-environment/app/data.csv")
+    data = read_csv.read_csv('data.csv')
     country = input("Type Country => ")
     print(country)
 
