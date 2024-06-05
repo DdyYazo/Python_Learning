@@ -10,32 +10,33 @@ Esta es una recopilación de las utilidades y comandos implementados para pip y 
   - [Flujo de trabajo en python](#flujo-de-trabajo-en-python)
     - [main.py: Game Project](#mainpy-game-project)
 - [2. PIP y Entornos Virtuales](#2-pip-y-entornos-virtuales)
-  - [2.1. ¿Que es pip?](#21-que-es-pip)
-  - [2.2. ¿Que es un entorno o ambiente virtual?](#22-que-es-un-entorno-o-ambiente-virtual)
+  - [2.1. `¿Que es pip?`](#21-que-es-pip)
+  - [2.2. `¿Que es un entorno o ambiente virtual?`](#22-que-es-un-entorno-o-ambiente-virtual)
     - [Ejemplo de un `venv` "Virtual Environment"](#ejemplo-de-un-venv-virtual-environment)
     - [Caracteristicas de los `venv`](#caracteristicas-de-los-venv)
-  - [2.3. Creando un `venv` "*Entorno Virtual*"](#23-creando-un-venv-entorno-virtual)
-  - [2.4. Requirements.txt](#24-requirementstxt)
-  - [2.5. Add Project](#25-add-project)
-  - [2.6. Solicitudes HTTP con Requests](#26-solicitudes-http-con-requests)
+  - [2.3. `Creando un venv "*Entorno Virtual*"`](#23-creando-un-venv-entorno-virtual)
+  - [2.4. `Requirements.txt `](#24-requirementstxt-)
+  - [2.5. `Add Project`](#25-add-project)
+  - [2.6. `Solicitudes HTTP con Requests`](#26-solicitudes-http-con-requests)
     - [Instalación de la libreria `requests` en un `venv` de Python](#instalación-de-la-libreria-requests-en-un-venv-de-python)
     - [Solicitudes POST a una API fake con `requests`](#solicitudes-post-a-una-api-fake-con-requests)
-  - [2.7. Uso de la libreria `pandas` en Python](#27-uso-de-la-libreria-pandas-en-python)
+  - [2.7. `Uso de la libreria "pandas" en Python`](#27-uso-de-la-libreria-pandas-en-python)
     - [Aplicaciones y usos de la libreria `pandas` en Python](#aplicaciones-y-usos-de-la-libreria-pandas-en-python)
     - [Instalación de la libreria `pandas` en un `venv` de Python](#instalación-de-la-libreria-pandas-en-un-venv-de-python)
     - [Ejemplos de uso de la libreria `pandas` en Python](#ejemplos-de-uso-de-la-libreria-pandas-en-python)
-  - [2.8. Uso de la libreria `FastAPI` en Python](#28-uso-de-la-libreria-fastapi-en-python)
+  - [2.8. `Uso de la libreria "FastAPI" en Python`](#28-uso-de-la-libreria-fastapi-en-python)
     - [Aplicaiones y usos de la libreria `FastAPI` en Python](#aplicaiones-y-usos-de-la-libreria-fastapi-en-python)
     - [Instalación de la libreria `FastAPI` en un `venv` de Python](#instalación-de-la-libreria-fastapi-en-un-venv-de-python)
     - [Ejemplos de uso de la libreria `FastAPI` en Python](#ejemplos-de-uso-de-la-libreria-fastapi-en-python)
 - [3. Python en contenedores de Docker](#3-python-en-contenedores-de-docker)
-  - [3.1. ¿Qué es Docker?](#31-qué-es-docker)
+  - [3.1. `¿Qué es Docker?`](#31-qué-es-docker)
     - [De que manera se aislan los diferentes scrips de python en contenedores Docker](#de-que-manera-se-aislan-los-diferentes-scrips-de-python-en-contenedores-docker)
-  - [3.2. Instalación de Docker en Windows Subsystem for Linux (WSL)](#32-instalación-de-docker-en-windows-subsystem-for-linux-wsl)
-  - [3.3 Dockerización de scripts de Python](#33-dockerización-de-scripts-de-python)
+  - [3.2. `Instalación de Docker en Windows Subsystem for Linux (WSL)`](#32-instalación-de-docker-en-windows-subsystem-for-linux-wsl)
+  - [3.3 `Dockerización de scripts de Python`](#33-dockerización-de-scripts-de-python)
       - [1. Crear un archivo `Dockerfile` en el directorio del proyecto](#1-crear-un-archivo-dockerfile-en-el-directorio-del-proyecto)
       - [2. Crear el archivo `docker-compose.yml` en el directorio del proyecto](#2-crear-el-archivo-docker-composeyml-en-el-directorio-del-proyecto)
       - [3. Poner en marcha el contenedor](#3-poner-en-marcha-el-contenedor)
+  - [3.5. `Dockerización de una API web con FastAPI`](#35-dockerización-de-una-api-web-con-fastapi)
 
 --- 
 
@@ -70,7 +71,7 @@ python3 main.py
 
 # 2. PIP y Entornos Virtuales
 
-## 2.1. ¿Que es pip?
+## 2.1. `¿Que es pip?`
 
 PIP es el gestor de paquetes de python, es posible buscar librerías en la pagina [pypi.org](https://pypi.org).
 
@@ -80,7 +81,7 @@ PIP es el gestor de paquetes de python, es posible buscar librerías en la pagin
 - Listar todas las librerías de python instaladas por el usuario `pip3 freeze`.
 
 
-## 2.2. ¿Que es un entorno o ambiente virtual?
+## 2.2. `¿Que es un entorno o ambiente virtual?`
 Los entornos virtuales en Python son una herramienta muy útil que permite mantener separadas las dependencias requeridas por diferentes proyectos. En esencia, un entorno virtual es un directorio que contiene una instalación de Python de una versión particular, además de unos cuantos paquetes adicionales.
 
 ### Ejemplo de un `venv` "Virtual Environment"
@@ -108,7 +109,7 @@ Aquí es donde los entornos virtuales son útiles. **Puedes crear un entorno vir
 - Ofrecen una forma conveniente y segura de utilizar diferentes aplicaciones y tecnologías en un mismo equipo
 
 
-## 2.3. Creando un `venv` "*Entorno Virtual*"
+## 2.3. `Creando un venv "*Entorno Virtual*"`
 Coamandos a implementar para saber el curso del entorno virtual
 1. Verificar donde esta `python` y `pip`
 ```sh
@@ -152,7 +153,7 @@ pip3 freeze
 deactivate
 ```
 
-## 2.4. Requirements.txt 
+## 2.4. `Requirements.txt `
 >[!IMPORTANT]
 > 
 > **Archivo que gestiona todas las dependencias y en que versiones se necesitan.**
@@ -176,7 +177,7 @@ cat requirements.txt
 pip3 install -r requirements.txt
 ```
 
-## 2.5. Add Project
+## 2.5. `Add Project`
 **Con base en lo anterior, añadir el proyecto en un nuevo ambiente clonando el repositorio**
 ```sh
 # Clona el repositorio de GitHub a tu máquina local
@@ -198,7 +199,7 @@ pip3 install -r requirements.txt
 python3 main.py
 ```
 
-## 2.6. Solicitudes HTTP con Requests
+## 2.6. `Solicitudes HTTP con Requests`
 
 La librería `requests` en Python **es una biblioteca para hacer solicitudes HTTP.** Es una de las bibliotecas más populares en Python para hacer solicitudes HTTP debido a su simplicidad y facilidad de uso.
 
@@ -251,7 +252,7 @@ def get_categories():
 ```
 
 
-## 2.7. Uso de la libreria `pandas` en Python
+## 2.7. `Uso de la libreria "pandas" en Python`
 
 La librería `pandas` en Python es una biblioteca de código abierto que proporciona estructuras de datos de alto rendimiento y fáciles de usar, así como herramientas de análisis de datos.
 
@@ -307,7 +308,7 @@ print(filtered_df.describe())
 >
 
 
-## 2.8. Uso de la libreria `FastAPI` en Python
+## 2.8. `Uso de la libreria "FastAPI" en Python`
 
 La librería **[FastAPI](https://fastapi.tiangolo.com/#installation)** es un Framework web moderno y rápido para la creación de API web con Python 3.6+. Utiliza la mejor OpenAPI y JSON Schema para la validación de datos y la documentación automática.
 
@@ -398,7 +399,7 @@ if __name__ == '__main__':
 
 # 3. Python en contenedores de Docker
 
-## 3.1. ¿Qué es Docker?
+## 3.1. `¿Qué es Docker?`
 
 Docker es una plataforma de código abierto que permite a los desarrolladores empaquetar, enviar y ejecutar aplicaciones en contenedores. Los contenedores son entornos ligeros y portátiles que contienen todo lo necesario para ejecutar una aplicación, incluidas las bibliotecas, las dependencias y el código.
 
@@ -419,7 +420,7 @@ Docker es una plataforma de código abierto que permite a los desarrolladores em
   <img src="https://i.postimg.cc/Vk4dZgNr/imagen-2024-05-30-183302276.png" alt="Aquí va el texto del enlace">
 </p>
 
-## 3.2. Instalación de Docker en Windows Subsystem for Linux (WSL)
+## 3.2. `Instalación de Docker en Windows Subsystem for Linux (WSL)`
 
 Para instalar Docker en Windows Subsystem for Linux (WSL), **se pueden seguir los pasos del siguiente video**.
 
@@ -435,7 +436,7 @@ Para instalar Docker en Windows Subsystem for Linux (WSL), **se pueden seguir lo
 
 2. Consultar la **[documentación oficial de Docker](https://docs.docker.com/desktop/wsl/)** para algunas configuraciones para WSL.
 
-## 3.3 Dockerización de scripts de Python
+## 3.3 `Dockerización de scripts de Python`
 
 > [!IMPORTANT]
 >
@@ -545,7 +546,38 @@ docker-compose exec app-csv bash
 docker-compose down
 ```
 
+> [!TIP]
+> 
+> ## 3.4. `Automatización de vinculos a los archivos con Docker`
+> 
+> Cada vez que se realiza un cambio en alguno de los archivos del proyecto y se desea actualizar el contenedor, se debe volver a construir la imagen del contenedor con el comando `docker-compose build` y luego detener el contenedor que esta en ejecución con el comando `docker-compose down`. Para luego posteriormente volver a levantar el contenedor con el comando `docker-compose up -d`. **ESTO RESULTA SER UNA TAREA TEDIOSA Y REPETITIVA**
+> 
+> Por lo tanto para hacerlo mas eficiente se puede automatizar el proceso de vinculación de los archivos del proyecto con el contenedor de Docker mediante una configuración en el archivo `docker-compose.yml`, agregando una linea de mapeo de volumen para vincular los archivos del proyecto con el contenedor, de esta manera cada vez que se realice un cambio en los archivos del proyecto, el contenedor se actualizara automáticamente.
 
+```yml
+# resto de codigo
+   dockerfile: <archivo Docker> 
+  volumes: 
+   - .:/app #esta linea mapea la carpeta actual con la carpeta /app del contenedor para que cada cambio que se haga en la carpeta actual se refleje en el contenedor
+```
 
+## 3.5. `Dockerización de una API web con FastAPI`
 
+Al igual que el caso de los scripts de Python, **se puede dockerizar una API web creada con FastAPI** siguiendo los mismos pasos mencionados anteriormente, con la excepción de que puede cambiar la version de Python y las dependencias del proyecto. En este caso la unica linea que se alteraria en el archivo `Dockerfile` estaria relacionada con el servidor `uvicorn` que se encarga de ejecutar la API web y asi mismo indicando el puerto de ejecución.
 
+```Dockerfile
+# -- Resto de codigo
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+```
+
+- En este caso para el caso del servidor web **se va a usar `uvicorn` que es un servidor web asincrono para python y se establece en el puerto 80.**
+
+Y asi mismo, en el caso del archivo `docker-compose.yml` se debe especificar el puerto de ejecución de la API web y el nombre de la imagen con respecto al proyecto, que en este caso es `web-server`.
+
+```yml
+services: 
+ web-server: 
+# -- Resto de codigo
+  ports: 
+   - "80:80"
+```
