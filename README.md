@@ -1,9 +1,18 @@
-# python-pip-environment
-Esta es una recopilación de las utilidades y comandos implementados para pip y entornos virtuales de python
+<div align="center">
+
+# Python: Pip y entornos virtuales
+
+<p align="center">
+  <img src="https://i.postimg.cc/Pf9qsRBx/imagen-2024-06-15-124325203.png" width="450">
+</p>
+
+<p><strong>Esta es una recopilación de las utilidades y comandos implementados para pip y entornos virtuales de python</strong></p>
+
+</div>
 
 # Tabla de contenido
 
-- [python-pip-environment](#python-pip-environment)
+- [Python: Pip y entornos virtuales](#python-pip-y-entornos-virtuales)
 - [Tabla de contenido](#tabla-de-contenido)
 - [1. Comandos Iniciales para la instalación de paquetes y entornos para Python](#1-comandos-iniciales-para-la-instalación-de-paquetes-y-entornos-para-python)
   - [Instalación en Windows con WSL](#instalación-en-windows-con-wsl)
