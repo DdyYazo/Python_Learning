@@ -5,9 +5,6 @@
 <p align="center">
   <img src="https://i.postimg.cc/Pf9qsRBx/imagen-2024-06-15-124325203.png" width="450">
 </p>
-
-<p><strong>Esta es una recopilación de las utilidades y comandos implementados para pip y entornos virtuales de python</strong></p>
-
 </div>
 
 # Tabla de contenido
