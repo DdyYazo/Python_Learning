@@ -1,6 +1,6 @@
 <div align="center">
 
-# Fundamentos de Python
+# Programación Orientada a Objetos con Python
 
 <a href="https://postimg.cc/14KdYq2y">
   <img src="https://i.postimg.cc/JhfdMqwc/python.png" alt="imagen-2024-03-07-211141241" width="250"/>
