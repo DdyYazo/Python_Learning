@@ -2,7 +2,7 @@ from os import system
 
 system('clear')
 
-from ClassSuper import *
+from ClassSuper_Her import *
 
 print('Creación de objeto de prueba '.center(50,'-'),'\n')
 

@@ -3,7 +3,7 @@ from os import system
 system('clear')
 
 
-from ClassEncapsul import Persona as ce
+from scripts.Encapsulation.ClassEncapsul import Persona as ce
 
 
 print('Creación de objeto de prueba '.center(50,'-'),'\n')
