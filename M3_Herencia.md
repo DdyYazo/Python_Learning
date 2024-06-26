@@ -251,6 +251,7 @@ Class Cuadrado(FiguraGeometrica, Color):
 
 - Porque el cuadrado es una figura geometrica que tiene todos sus lados iguales, por lo tanto, el ancho y el alto son iguales, por lo que se paso el atributo `lado` como parametro en el metodo `__init__` de la clase `Cuadrado`.
 
+
 # 4. **Método MRO "Method Resolution Order" (Orden de las clases)**
 
 El **MRO** es el **orden en el que se buscan los métodos en las clases base** cuando se llama a un método en una clase derivada. En Python, el MRO se calcula utilizando el algoritmo **C3 Linearization**.

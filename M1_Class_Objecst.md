@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# **Clases y objetos en Python**
+# **Clases y Objetos en Python**
 
 
 <p align="center">
@@ -12,26 +12,26 @@
 </div>
 
 # **Tabla de contenido**
-- [**Clases y objetos en Python**](#clases-y-objetos-en-python)
+- [**Clases y Objetos en Python**](#clases-y-objetos-en-python)
 - [**Tabla de contenido**](#tabla-de-contenido)
 - [1. **¿Que es una clase y un objeto en Python?**](#1-que-es-una-clase-y-un-objeto-en-python)
   - [1.1. `¿Como declarar una clase en Python?`](#11-como-declarar-una-clase-en-python)
   - [1.2. `¿Como agregar metodos y atributos a una clase en Python?`](#12-como-agregar-metodos-y-atributos-a-una-clase-en-python)
 - [2. **Objetos en Python**](#2-objetos-en-python)
   - [2.1. `Objetos con argumentos`](#21-objetos-con-argumentos)
-  - [2.3. `Referencia en memoria de un objeto`](#23-referencia-en-memoria-de-un-objeto)
-  - [2.4. `Modificando atributos de un objeto`](#24-modificando-atributos-de-un-objeto)
-  - [2.4. `Metodos de instancia`](#24-metodos-de-instancia)
-  - [2.4. `Mas sobre "sefl" y atributos de instancia`](#24-mas-sobre-sefl-y-atributos-de-instancia)
-  - [2.5. `Metodos de instancia con parametros *args y **kwargs`](#25-metodos-de-instancia-con-parametros-args-y-kwargs)
+  - [2.2. `Referencia en memoria de un objeto`](#22-referencia-en-memoria-de-un-objeto)
+  - [2.3. `Modificando atributos de un objeto`](#23-modificando-atributos-de-un-objeto)
+  - [2.4. `Metodos de instancia (objetos)`](#24-metodos-de-instancia-objetos)
+  - [2.5. `Mas sobre "self" y atributos de instancia no visibles por otros objetos`](#25-mas-sobre-self-y-atributos-de-instancia-no-visibles-por-otros-objetos)
+  - [2.6. `Metodos de instancia (objetos) con parametros *args y **kwargs`](#26-metodos-de-instancia-objetos-con-parametros-args-y-kwargs)
 
 # 1. **¿Que es una clase y un objeto en Python?**
 
-<img align='right' width="350px" alt="coding web" src="https://i.postimg.cc/JtVvX2pR/imagen-2024-06-17-173325415.png" style="margin-left: 20px; margin-top: 20px;">
+<img align='right' width="350px" alt="coding web" src="https://i.postimg.cc/JtVvX2pR/imagen-2024-06-17-173325415.png" style="margin-left: 20px;">
 
 Una **clase** es una `plantilla` para crear `objetos`. 
 
-- Define los atributos y métodos comunes a todos los objetos de un tipo. 
+- Define los **atributos** y **métodos** comunes a todos los objetos de un tipo. 
 
 Los **objetos** son `instancias` de una clase. 
 
@@ -42,10 +42,10 @@ Los **objetos** son `instancias` de una clase.
 
 >[!NOTE]
 >
-> Al crear un archivo para una clase en Python, **se recomienda declarar el nombre del archivo con la primera letra en mayúscula y sin espacios.** Ejemplo: `MiClase.py`
+> Al crear un archivo para una clase en Python, **se recomienda declarar el nombre del archivo con la primera letra en mayúscula y sin espacios.** 
+> - Ejemplo: `MiClase.py`
 
-<br>
-<br>
+
 
 ## 1.1. `¿Como declarar una clase en Python?`
 ```python
@@ -89,6 +89,9 @@ print(f'Hola mi nombre es {persona1.nombre} {persona1.apellido} y tengo {persona
 - `self`: Palabra reservada que se utiliza para **hacer referencia a los atributos y métodos de la clase.** (similar al `this` de otros lenguajes de programación), 
 >  [!IMPORTANT]
 > Esta siempre debe ser el primer parámetro de los métodos de la clase.
+---
+
+
 
 
 # 2. **Objetos en Python**
@@ -117,7 +120,7 @@ print(f'Objeto Persona 2 :{persona2.nombre} {persona2.apellido} {persona2.edad}'
 
 - **Impresión de los objetos:** con los atributos `nombre`, `apellido` y `edad` de los objetos `persona1` y `persona2
 
-## 2.3. `Referencia en memoria de un objeto`
+## 2.2. `Referencia en memoria de un objeto`
 <img align='right' width="350px" alt="coding web" src="https://i.postimg.cc/Y9NYHp96/imagen-2024-06-17-211957066.png" style="margin-left: 20px; margin-top: 20px;">
 
 Estableciendo un punto de interrupción en la línea `persona1 = Persona("Juan", "Perez", 30)`al lado izquierdo de la linea y ejecutando el código en modo debug, se puede observar la referencia en memoria del objeto `persona1`, y la función de la variable `self` en la clase `Persona`, que apunta a la dirección de memoria del objeto.
@@ -127,7 +130,7 @@ Estableciendo un punto de interrupción en la línea `persona1 = Persona("Juan",
 Esto hace un recorrido de cada uno de los atributos de la clase `Persona` y los asigna a la dirección de memoria del objeto `persona1` o los objetos que poseen los atributos de la clase `Persona`.
 
 
-## 2.4. `Modificando atributos de un objeto`
+## 2.3. `Modificando atributos de un objeto`
 
 ```python
 class Persona:
@@ -154,7 +157,9 @@ print(f'Objeto Persona 1 :{persona1.nombre} {persona1.apellido} {persona1.edad}'
 >
 > Este es un tema muy de la mano con el **encapsulamiento** en la programación orientada a objetos, ya que se puede controlar el acceso a los atributos de un objeto y se puede modificar los atributos de un objeto de manera controlada.
 
-## 2.4. `Metodos de instancia`
+## 2.4. `Metodos de instancia (objetos)`
+
+```python
 
 <p align="center">
   <img src="https://i.postimg.cc/4ykQ8jqM/Screenshot-2024-06-18-172302.png" alt="Aquí va el texto del enlace" width="500">
@@ -184,7 +189,7 @@ persona1.mostrarDetalle() # Output: Persona: Juan Perez, tu edad es: 30
 > Cuando se hace referencia a los atributos de la clase en un método de instancia, **se debe hacer mediante el atributo `self` para acceder a estos.**
 
 
-## 2.4. `Mas sobre "sefl" y atributos de instancia`
+## 2.5. `Mas sobre "self" y atributos de instancia no visibles por otros objetos`
 
 ```python
 class Persona:
@@ -222,7 +227,7 @@ print(persona2.telefono) # Error: AttributeError: 'Persona' object has no attrib
   
   - En este caso, se llama al método `mostrarDetalle` desde la clase `Persona` con el objeto `persona1` y se obtiene el mismo resultado que al llamar al método con el objeto `persona1`. Pero **no es una buena práctica** ya que se pierde la referencia al objeto y se puede perder el control de los atributos del objeto.
 
-## 2.5. `Metodos de instancia con parametros *args y **kwargs`
+## 2.6. `Metodos de instancia (objetos) con parametros *args y **kwargs`
 
 ```python
 class Persona:
@@ -248,3 +253,4 @@ persona1 = Persona("Juan", "Perez", 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, , telefon
 > [!IMPORTANT]
 >
 > Al declarar los argumentos `*args` y `**kwargs` en el objeto `persona1`, **no se pueden duplicar los argumentos ya existentes como por ejemplo `nombre`, `apellido` y `edad`** ya que estos ya están declarados en el método `__init__` de la clase `Persona`.
+---

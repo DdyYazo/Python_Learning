@@ -3,13 +3,16 @@ from os import system
 system('clear')
 
 
-from ClassFigure_HM import FiguraGeometrica 
-from ClassColor_HM import Color
+from FigureGeometry_HM import FiguraGeometrica 
+from Color_HM import Color
 
-class Cuadrado(FiguraGeometrica, Color):
+class Cuadrado (FiguraGeometrica, Color):
     def __init__(self, lado, color):
         FiguraGeometrica.__init__(self, lado, lado)
         Color.__init__(self, color)
     
     def calcular_area (self):
         return self.ancho * self.alto
+    
+    def __str__(self):
+        return f'{FiguraGeometrica.__str__(self)} {Color.__str__(self)}'

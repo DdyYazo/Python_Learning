@@ -17,8 +17,8 @@
 - [1. **¿Qué es el encapsulamiento?**](#1-qué-es-el-encapsulamiento)
 - [2. **Métodos `getter` y `setter`**](#2-métodos-getter-y-setter)
   - [2.1. **`Método getter`**](#21-método-getter)
+    - [2.1.1 **`Variables de solo lectura`**](#211-variables-de-solo-lectura)
   - [2.2. **`Método setter`**](#22-método-setter)
-  - [2.3. **`Variables de solo lectura`**](#23-variables-de-solo-lectura)
   - [2.4. **`Encapsulamiento de atributos en un solo método getter y setter`**](#24-encapsulamiento-de-atributos-en-un-solo-método-getter-y-setter)
 - [3. **Uso de `Módulos` y `Clases` en Python**](#3-uso-de-módulos-y-clases-en-python)
 - [4. **Destructor de objetos de una clase (práctica no tan común)**](#4-destructor-de-objetos-de-una-clase-práctica-no-tan-común)
@@ -75,6 +75,31 @@ print(p.edad) # 25
 
 - En el ejemplo anterior, los métodos `get_nombre` y `get_edad` son métodos `getter` que permiten obtener el valor de los atributos `__nombre` y `__edad` respectivamente. 
 
+### 2.1.1 **`Variables de solo lectura`**
+
+En Python, también es posible **crear atributos de solo lectura** utilizando únicamente el método `getter` y no el método `setter`. De esta forma, el atributo solo se puede leer y no se puede modificar.
+
+```python
+class Persona:
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre
+        self.__edad = edad
+
+    @property
+    def nombre(self):
+        return self.__nombre
+
+    @property
+    def edad(self):
+        return self.__edad
+
+p = Persona('Juan', 25)
+print(p.nombre) # Juan
+print(p.edad) # 25
+	
+```
+
+- En el ejemplo anterior, los atributos `__nombre` y `__edad` son de solo lectura, ya que solo se ha implementado el método `getter` y no el método `setter`. Por lo tanto, **no se pueden modificar los valores de estos atributos**.
 
 ## 2.2. **`Método setter`**
 
@@ -115,31 +140,6 @@ print(p.edad) # 30
 >
 > Aunque se puede acceder a los atributos privados de una clase en Python, **no es una buena práctica**. Es preferible **utilizar métodos `getter` y `setter` para acceder y modificar los atributos de una clase, ya que esto permite un mayor control sobre el acceso** a los datos y garantiza la integridad de los mismos.
 
-## 2.3. **`Variables de solo lectura`**
-
-En Python, también es posible **crear atributos de solo lectura** utilizando únicamente el método `getter` y no el método `setter`. De esta forma, el atributo solo se puede leer y no se puede modificar.
-
-```python
-class Persona:
-    def __init__(self, nombre, edad):
-        self.__nombre = nombre
-        self.__edad = edad
-
-    @property
-    def nombre(self):
-        return self.__nombre
-
-    @property
-    def edad(self):
-        return self.__edad
-
-p = Persona('Juan', 25)
-print(p.nombre) # Juan
-print(p.edad) # 25
-	
-```
-
-- En el ejemplo anterior, los atributos `__nombre` y `__edad` son de solo lectura, ya que solo se ha implementado el método `getter` y no el método `setter`. Por lo tanto, **no se pueden modificar los valores de estos atributos**.
 
 
 ## 2.4. **`Encapsulamiento de atributos en un solo método getter y setter`**
