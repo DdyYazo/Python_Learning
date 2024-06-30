@@ -23,9 +23,17 @@
 - [3. **Contexto Estático *(variables y métodos de clase)* y Dinamico *(variables y métodos de instancia)* de una clase en Python**](#3-contexto-estático-variables-y-métodos-de-clase-y-dinamico-variables-y-métodos-de-instancia-de-una-clase-en-python)
   - [3.1. **El `contexto estático` de una clase `(atributos y metodos estáticos -> clase)`**](#31-el-contexto-estático-de-una-clase-atributos-y-metodos-estáticos---clase)
   - [3.2. **El `contexto dinamico` de una clase `(atributos y metodos dinamicos -> instancia)`**](#32-el-contexto-dinamico-de-una-clase-atributos-y-metodos-dinamicos---instancia)
-  - [4.3. **`Variables de clase al vuelo`**](#43-variables-de-clase-al-vuelo)
+  - [3.3. **`Variables de clase al vuelo`**](#33-variables-de-clase-al-vuelo)
 - [4. **Constantes de Clases en Python**](#4-constantes-de-clases-en-python)
-- [5. **Diseño de Clases en Python**](#5-diseño-de-clases-en-python)
+- [5. **Diseño de Clases en Python y relación de agregación**](#5-diseño-de-clases-en-python-y-relación-de-agregación)
+  - [5.1. **Consultar más sobre el diseño de clases en *diagramas de clases y las relaciones existentes***](#51-consultar-más-sobre-el-diseño-de-clases-en-diagramas-de-clases-y-las-relaciones-existentes)
+  - [5.2. **Ejemplo de diseño de clases en Python**](#52-ejemplo-de-diseño-de-clases-en-python)
+- [6. **Sobrecarga de Operadores en Clases en Python**](#6-sobrecarga-de-operadores-en-clases-en-python)
+  - [6.1. **Operadores Aritméticos**](#61-operadores-aritméticos)
+      - [**\_Ejemplo de sobrecarga de operadores aritméticos en una clase en Python**](#_ejemplo-de-sobrecarga-de-operadores-aritméticos-en-una-clase-en-python)
+  - [6.2. **Operadores de Comparación**](#62-operadores-de-comparación)
+  - [6.3. **Operadores de Asignación**](#63-operadores-de-asignación)
+  - [6.4. **Operadores Unarios**](#64-operadores-unarios)
 
 # 1. **Clases Abstractas en Python**
 
@@ -78,6 +86,7 @@ print(triangulo.area()) # Output: 25.0
   
   - Ademas, como ejemplo en la clase `Triangulo` se trato de crear una instancia de la clase `FiguraGeometrica` y **se obtuvo un error** ya que no se pueden crear instancias de una clase abstracta.
 ---
+
 
 # 2. **Métodos Estaticos y de Clase en Python**
 
@@ -177,6 +186,8 @@ empleado2 = Empleado("Ana")
 # Accediendo al conteo de empleados a través de un método de clase
 print(Empleado.obtener_conteo_empleados()) # Output: 2
 ```
+---
+
 
 # 3. **Contexto Estático *(variables y métodos de clase)* y Dinamico *(variables y métodos de instancia)* de una clase en Python**
 
@@ -225,7 +236,7 @@ print(persona1.nombre) # Output: Juan
 
 - En el ejemplo anterior, se accede al atributo `nombre` de la instancia `persona1` de la clase `Persona` mediante la notación de punto `(.)`.
 
-## 4.3. **`Variables de clase al vuelo`**
+## 3.3. **`Variables de clase al vuelo`**
 
 Se pueden agregar atributos a una clase al vuelo, es decir, **sin necesidad de declararlos en la clase.**
 
@@ -241,6 +252,7 @@ print(MiClase.nombre) # Output: Juan
 
 - En el ejemplo anterior, se agrega el atributo `nombre` a la clase `MiClase` al vuelo y se accede a este mediante la notación de punto `(.)`.
 ---
+
 
 # 4. **Constantes de Clases en Python**
 
@@ -259,9 +271,203 @@ print(MiClase.PI) # Output: 3.1416
 > [!NOTE]
 >
 > las constante **siempre se deben declarar en mayúsculas y separadas por guiones bajos `_`** para especificar que son constantes.
+---
 
 
-# 5. **Diseño de Clases en Python**
+# 5. **Diseño de Clases en Python y relación de agregación**
+
+Pueden haber muchos casos para relacionar clases entre sí, por lo que es importante tener en cuenta el ***diseño de las clases*** para que sean **reutilizables, mantenibles y fáciles de entender.**
+
+En este caso para entender como se puede establecer el **diseño de una clase** cuando se trabaja con varias clases es importante entender los conceptos de **relaciones entre clases** que considera **una relación de una clase con otra clase.** dependiendo de la relación que se desee establecer.
+
+## 5.1. **Consultar más sobre el diseño de clases en *[diagramas de clases y las relaciones existentes](https://uniminuto0-my.sharepoint.com/:b:/g/personal/david_yazo_uniminuto_edu_co/EYXHyvF2llhPthLzTvGC8XQBejvTK0ax2EgrEgAKaFlqEg?e=iR7JMZ)*** 
+
+
+## 5.2. **Ejemplo de diseño de clases en Python**
+
+En este ejemplo es importante comprender la relación de `«agregación»` entre las clases **`Orden`** y **`Producto`**.
+
+1. Una clase **`Orden`** con el atributo de clase `contador_ordenes` que lleva la cuenta de cuántas órdenes se han creado y los atributos de instancia `id_orden` y `productos` que representan el identificador de la orden y una **lista de los productos** que se agregan a la orden.
+
+2. Se tiene una clase **`Producto`** que tiene el atributo de clase `contador_productos` con los atributos de instancia `id_producto`, `nombre` y `precio` que representan el identificador del producto, el nombre del producto y el precio del producto respectivamente.
+
+
+<img align='right' width="300px" alt="coding web" src="https://i.postimg.cc/rFwr85Cw/imagen-2024-06-27-192508855.png" style="margin-left: 20px;">
+
+
+**Para entender como funciona la relación de `«agregación»`** entre las clases **`Orden`** y **`Producto`** se da por la **Relación Todo-Parte** que representa una relación todo-parte, pero con una asociación más débil que la `«composición»`. Aquí, la clase **`Orden`** actúa como el **"todo"** y los objetos **`Producto`** son las **"partes"**. Sin embargo, **estas "partes" (Producto) no están exclusivamente ligadas a una única "todo" (Orden)**, pudiendo ser compartidas entre diferentes Ordenes.
+
+> [!IMPORTANT]
+>
+> Cuando se trabaja con varias clases, **se suele empezar por la clase que no tiene relación con otras clases, y luego se continúa con las clases que tienen relación con la clase inicial** como lo es el caso de la clase **`Orden`** y **`Producto`** en la que la clase **`Orden`** depende de la clase **`Producto`** para poder agregar productos a la orden.
+
+```python
+
+""" Clase Producto sin relación con la clase Orden """
+
+class Producto:
+    contador_productos = 0
+
+    @classmethod
+    def _incrementar_contador(cls):
+        cls.contador_productos += 1
+        return cls.contador_productos
+
+    def __init__(self, nombre, precio):
+        self._id_producto = Producto._incrementar_contador()
+        self._nombre = nombre
+        self._precio = precio
+    
+    # Getters y Setters omitidos
+
+    def __str__(self):
+        return f"Id Producto: {self._id_producto}, Nombre: {self._nombre}, Precio: {self._precio}"
+
+""" Clase Orden con relación de agregación con la clase Producto """
+
+class Orden:
+    contador_ordenes = 0
+
+    @classmethod
+    def _incrementar_contador(cls):
+        cls.contador_ordenes += 1
+        return cls.contador_ordenes
+
+    def __init__(self, productos):
+        self._id_orden = Orden._incrementar_contador()
+        self._productos = list(productos)
+
+    # Getters y Setters omitidos
+
+    def agregar_producto(self, producto):
+        self._productos.append(producto)
+
+    def calcular_total (self):
+        total = 0
+        for producto in self._productos:
+            total += producto.precio # metodo getter de precio
+        return total
+
+
+    def __str__(self):
+        productos_str = ""
+        for producto in self._productos:
+            productos_str += producto.__str__() + '|'
+        return f"Orden: {self._id_orden}\nProductos:\n{productos_str} \nTotal: {self.calcular_total()}"
+
+# Creando productos
+producto1 = Producto("Camisa", 100.00)
+producto2 = Producto("Pantalon", 150.00)
+producto3 = Producto("Zapatos", 200.00)
+
+# Creando orden
+productos = [producto1, producto2]
+orden1 = Orden(productos)
+print(orden1) # Output: Orden: 1 Productos: Id Producto: 1, Nombre: Camisa, Precio: 100.0 Id Producto: 2, Nombre: Pantalon, Precio: 150.0 | Total: 250.0
+
+orden1.agregar_producto(producto3)
+print(orden1) # Output: Orden: 1 Productos: Id Producto: 1, Nombre: Camisa, Precio: 100.0 Id Producto: 2, Nombre: Pantalon, Precio: 150.0 Id Producto: 3, Nombre: Zapatos, Precio: 200.0 | Total: 450.0
+```
+
+- En el ejemplo anterior, se crean las clases **`Producto`** y **`Orden`**. La clase **`Producto`** no tiene relación con la clase **`Orden`** y la clase **`Orden`** tiene una relación de **agregación** con la clase **`Producto`**. Se crean instancias de la clase **`Producto`** y se agregan a la clase **`Orden`** mediante el método `agregar_producto()`, ademas se calcula el total de la orden mediante el método `calcular_total()` el cual mediante un ciclo `for` suma el precio de cada producto en la orden accediendo al metodo `getter` de `precio` de la clase **`Producto`**. Luego se imprime la orden con los productos agregados a partir de una variable de tipo lista `productos` trayendo los datos del producto mediante el método `__str__()` de la clase **`Producto`**.
+
+
+---
+# 6. **Sobrecarga de Operadores en Clases en Python**
+
+La **sobrecarga de operadores** en Python permite definir el comportamiento de los operadores en las clases personalizadas. Esto significa que se puede definir cómo se comportan los operadores como `+`, `-`, `*`, `/`, `==`, `!=`, `>`, `<`, `>=`, `<=`, entre otros, en las clases personalizadas.
+
+- Para sobrecargar un operador en una clase en Python **se debe definir un método especial que corresponda al operador que se desea sobrecargar**. Algunos de los métodos especiales más comunes para sobrecargar operadores son:
+
+## 6.1. **Operadores Aritméticos**
+
+<div align="center">
+
+| Operador | Método especial | Descripción |
+|----------|-----------------|-------------|
+| `+` | `__add__(self, other)` | Sobrecarga del operador `+` |
+| `-` | `__sub__(self, other)` | Sobrecarga del operador `-` |
+| `*` | `__mul__(self, other)` | Sobrecarga del operador `*` |
+| `/` | `__truediv__(self, other)` | Sobrecarga del operador `/` |
+| `//` | `__floordiv__(self, other)` | Sobrecarga del operador `//` |
+| `%` | `__mod__(self, other)` | Sobrecarga del operador `%` |
+| `**` | `__pow__(self, other)` | Sobrecarga del operador `**` |
+
+</div>
+
+#### **_Ejemplo de sobrecarga de operadores aritméticos en una clase en Python**
+
+```python
+class Punto:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Punto(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other):
+        return Punto(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other):
+        return Punto(self.x * other.x, self.y * other.y)
+
+    def __truediv__(self, other):
+        return Punto(self.x / other.x, self.y / other.y)
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+punto1 = Punto(1, 2)
+punto2 = Punto(3, 4)
+print(punto1 + punto2) # Output: (4, 6)
+print(punto1 - punto2) # Output: (-2, -2)
+print(punto1 * punto2) # Output: (3, 8)
+print(punto1 / punto2) # Output: (0.3333333333333333, 0.5)
+```
+
+## 6.2. **Operadores de Comparación**
+
+<div align="center">
+
+| Operador | Método especial | Descripción |
+|----------|-----------------|-------------|
+| `<` | `__lt__(self, other)` | Sobrecarga del operador `<` |
+| `>` | `__gt__(self, other)` | Sobrecarga del operador `>` |
+| `<=` | `__le__(self, other)` | Sobrecarga del operador `<=` |
+| `>=` | `__ge__(self, other)` | Sobrecarga del operador `>=` |
+| `==` | `__eq__(self, other)` | Sobrecarga del operador `==` |
+| `!=` | `__ne__(self, other)` | Sobrecarga del operador `!=` |
+
+</div>
+
+## 6.3. **Operadores de Asignación**
+
+<div align="center">
+
+| Operador | Método especial | Descripción |
+|----------|-----------------|-------------|
+| `-=` | `__isub__(self, other)` | Sobrecarga del operador `-=` |
+| `+=` | `__iadd__(self, other)` | Sobrecarga del operador `+=` |
+| `*=` | `__imul__(self, other)` | Sobrecarga del operador `*=` |
+| `/=` | `__idiv__(self, other)` | Sobrecarga del operador `/=` |
+| `//=` | `__ifloordiv__(self, other)` | Sobrecarga del operador `//=` |
+| `%=` | `__imod__(self, other)` | Sobrecarga del operador `%=` |
+| `**=` | `__ipow__(self, other)` | Sobrecarga del operador `**=` |
+
+</div>
+
+## 6.4. **Operadores Unarios**
+
+<div align="center">
+
+| Operador | Método especial | Descripción |
+|----------|-----------------|-------------|
+| `-` | `__neg__(self)` | Sobrecarga del operador `-` |
+| `+` | `__pos__(self)` | Sobrecarga del operador `+` |
+| `~` | `__invert__(self)` | Sobrecarga del operador `~` |
+
+</div>
 
 
 
