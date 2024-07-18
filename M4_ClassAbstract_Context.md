@@ -27,7 +27,7 @@
 - [4. **Constantes de Clases en Python**](#4-constantes-de-clases-en-python)
 - [5. **Diseño de Clases en Python y relación de agregación**](#5-diseño-de-clases-en-python-y-relación-de-agregación)
   - [5.1. **Consultar más sobre el diseño de clases en *diagramas de clases y las relaciones existentes***](#51-consultar-más-sobre-el-diseño-de-clases-en-diagramas-de-clases-y-las-relaciones-existentes)
-  - [5.2. **Ejemplo de diseño de clases en Python**](#52-ejemplo-de-diseño-de-clases-en-python)
+  - [5.2. **Ejemplo de diseño de clases en Python (`«aggregation» relation`)**](#52-ejemplo-de-diseño-de-clases-en-python-aggregation-relation)
 - [6. **Sobrecarga de Operadores en Clases en Python**](#6-sobrecarga-de-operadores-en-clases-en-python)
   - [6.1. **Operadores Aritméticos**](#61-operadores-aritméticos)
       - [**\_Ejemplo de sobrecarga de operadores aritméticos en una clase en Python**](#_ejemplo-de-sobrecarga-de-operadores-aritméticos-en-una-clase-en-python)
@@ -283,7 +283,7 @@ En este caso para entender como se puede establecer el **diseño de una clase** 
 ## 5.1. **Consultar más sobre el diseño de clases en *[diagramas de clases y las relaciones existentes](https://uniminuto0-my.sharepoint.com/:b:/g/personal/david_yazo_uniminuto_edu_co/EYXHyvF2llhPthLzTvGC8XQBejvTK0ax2EgrEgAKaFlqEg?e=iR7JMZ)*** 
 
 
-## 5.2. **Ejemplo de diseño de clases en Python**
+## 5.2. **Ejemplo de diseño de clases en Python (`«aggregation» relation`)**
 
 En este ejemplo es importante comprender la relación de `«agregación»` entre las clases **`Orden`** y **`Producto`**.
 

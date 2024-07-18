@@ -103,6 +103,8 @@ class Coche:
 
 class Avion:
     def volar(self):
+        if not isinstance(self, Avion):
+            raise ValueError("El objeto no es una instancia de la clase Avion")
         print("Un avión puede volar")
         
 # Crear objetos de las clases Coche y Avión
