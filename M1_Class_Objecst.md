@@ -15,15 +15,16 @@
 - [**Clases y Objetos en Python**](#clases-y-objetos-en-python)
 - [**Tabla de contenido**](#tabla-de-contenido)
 - [1. **¿Que es una clase y un objeto en Python?**](#1-que-es-una-clase-y-un-objeto-en-python)
-  - [1.1. `¿Como declarar una clase en Python?`](#11-como-declarar-una-clase-en-python)
-  - [1.2. `¿Como agregar metodos y atributos a una clase en Python?`](#12-como-agregar-metodos-y-atributos-a-una-clase-en-python)
-- [2. **Objetos en Python**](#2-objetos-en-python)
-  - [2.1. `Objetos con argumentos`](#21-objetos-con-argumentos)
-  - [2.2. `Referencia en memoria de un objeto`](#22-referencia-en-memoria-de-un-objeto)
-  - [2.3. `Modificando atributos de un objeto`](#23-modificando-atributos-de-un-objeto)
-  - [2.4. `Metodos de instancia (objetos)`](#24-metodos-de-instancia-objetos)
-  - [2.5. `Mas sobre "self" y atributos de instancia no visibles por otros objetos`](#25-mas-sobre-self-y-atributos-de-instancia-no-visibles-por-otros-objetos)
-  - [2.6. `Metodos de instancia (objetos) con parametros *args y **kwargs`](#26-metodos-de-instancia-objetos-con-parametros-args-y-kwargs)
+- [3. **Clases en Python**](#3-clases-en-python)
+  - [3.1. ***¿Como declarar una clase en Python?***](#31-como-declarar-una-clase-en-python)
+  - [3.2. ***¿Como agregar `métodos` y `atributos` a una clase en Python?***](#32-como-agregar-métodos-y-atributos-a-una-clase-en-python)
+- [3. **Objetos en Python**](#3-objetos-en-python)
+  - [3.1. ***Objetos con argumentos***](#31-objetos-con-argumentos)
+  - [3.2. ***Referencia en memoria de un objeto***](#32-referencia-en-memoria-de-un-objeto)
+  - [3.3. ***Modificando atributos de un objeto***](#33-modificando-atributos-de-un-objeto)
+  - [3.4. ***Metodos de instancia (objetos)***](#34-metodos-de-instancia-objetos)
+  - [3.5. ***Mas sobre "`self`" y atributos de instancia no visibles por otros objetos***](#35-mas-sobre-self-y-atributos-de-instancia-no-visibles-por-otros-objetos)
+  - [3.6. ***Metodos de instancia (objetos) con parametros `*args` y `**kwargs`***](#36-metodos-de-instancia-objetos-con-parametros-args-y-kwargs)
 
 # 1. **¿Que es una clase y un objeto en Python?**
 
@@ -46,8 +47,8 @@ Los **objetos** son `instancias` de una clase.
 > - Ejemplo: `MiClase.py`
 
 
-
-## 1.1. `¿Como declarar una clase en Python?`
+# 3. **Clases en Python**
+## 3.1. ***¿Como declarar una clase en Python?***
 ```python
 class Persona:
     pass
@@ -61,7 +62,7 @@ print(type(Persona)) # <class 'type'>
 > - `pass`: Palabra reservada para **indicar que el tipo de dato no va a retornar nada.** En este caso, se utiliza para indicar que la clase `Persona` no tiene atributos ni métodos. **Tambien se suele utilizar en funciones o bucles.**
 
 
-## 1.2. `¿Como agregar metodos y atributos a una clase en Python?`
+## 3.2. ***¿Como agregar `métodos` y `atributos` a una clase en Python?***
 
 ```python 
 class Persona:
@@ -82,8 +83,8 @@ print(f'Hola mi nombre es {persona1.nombre} {persona1.apellido} y tengo {persona
 
 - `__init__`: **Método especial** que se llama **constructor**. Se ejecuta automáticamente cuando se crea un objeto de la clase. Y sirve para **inicializar los atributos de la clase.**
 
->[!IMPORTANT]
 > ### **`dunder method. (double underscore)`**
+>[!IMPORTANT]
 > El método `__init__` es especial debido al doble guion bajo al principio y al final del nombre cuando se esta trabajando con clases en Python, **ya que es un hace parte de los `dunder methods` o métodos especiales de Python.**
 
 - `self`: Palabra reservada que se utiliza para **hacer referencia a los atributos y métodos de la clase.** (similar al `this` de otros lenguajes de programación), 
@@ -94,9 +95,9 @@ print(f'Hola mi nombre es {persona1.nombre} {persona1.apellido} y tengo {persona
 
 
 
-# 2. **Objetos en Python**
+# 3. **Objetos en Python**
 
-## 2.1. `Objetos con argumentos`
+## 3.1. ***Objetos con argumentos***
 
 ```python
 class Persona:
@@ -120,7 +121,8 @@ print(f'Objeto Persona 2 :{persona2.nombre} {persona2.apellido} {persona2.edad}'
 
 - **Impresión de los objetos:** con los atributos `nombre`, `apellido` y `edad` de los objetos `persona1` y `persona2
 
-## 2.2. `Referencia en memoria de un objeto`
+## 3.2. ***Referencia en memoria de un objeto***
+
 <img align='right' width="350px" alt="coding web" src="https://i.postimg.cc/Y9NYHp96/imagen-2024-06-17-211957066.png" style="margin-left: 20px; margin-top: 20px;">
 
 Estableciendo un punto de interrupción en la línea `persona1 = Persona("Juan", "Perez", 30)`al lado izquierdo de la linea y ejecutando el código en modo debug, se puede observar la referencia en memoria del objeto `persona1`, y la función de la variable `self` en la clase `Persona`, que apunta a la dirección de memoria del objeto.
@@ -130,7 +132,7 @@ Estableciendo un punto de interrupción en la línea `persona1 = Persona("Juan",
 Esto hace un recorrido de cada uno de los atributos de la clase `Persona` y los asigna a la dirección de memoria del objeto `persona1` o los objetos que poseen los atributos de la clase `Persona`.
 
 
-## 2.3. `Modificando atributos de un objeto`
+## 3.3. ***Modificando atributos de un objeto***
 
 ```python
 class Persona:
@@ -157,14 +159,14 @@ print(f'Objeto Persona 1 :{persona1.nombre} {persona1.apellido} {persona1.edad}'
 >
 > Este es un tema muy de la mano con el **encapsulamiento** en la programación orientada a objetos, ya que se puede controlar el acceso a los atributos de un objeto y se puede modificar los atributos de un objeto de manera controlada.
 
-## 2.4. `Metodos de instancia (objetos)`
+## 3.4. ***Metodos de instancia (objetos)***
 
-```python
 
 <p align="center">
   <img src="https://i.postimg.cc/4ykQ8jqM/Screenshot-2024-06-18-172302.png" alt="Aquí va el texto del enlace" width="500">
 </p>
 <p align="center"><strong> Diagrama UML de la clase "Persona" y sus metodos de instancia</strong><p>
+</p>
 
 ```python
 class Persona:
@@ -189,7 +191,7 @@ persona1.mostrarDetalle() # Output: Persona: Juan Perez, tu edad es: 30
 > Cuando se hace referencia a los atributos de la clase en un método de instancia, **se debe hacer mediante el atributo `self` para acceder a estos.**
 
 
-## 2.5. `Mas sobre "self" y atributos de instancia no visibles por otros objetos`
+## 3.5. ***Mas sobre "`self`" y atributos de instancia no visibles por otros objetos***
 
 ```python
 class Persona:
@@ -227,7 +229,7 @@ print(persona2.telefono) # Error: AttributeError: 'Persona' object has no attrib
   
   - En este caso, se llama al método `mostrarDetalle` desde la clase `Persona` con el objeto `persona1` y se obtiene el mismo resultado que al llamar al método con el objeto `persona1`. Pero **no es una buena práctica** ya que se pierde la referencia al objeto y se puede perder el control de los atributos del objeto.
 
-## 2.6. `Metodos de instancia (objetos) con parametros *args y **kwargs`
+## 3.6. ***Metodos de instancia (objetos) con parametros `*args` y `**kwargs`***
 
 ```python
 class Persona:

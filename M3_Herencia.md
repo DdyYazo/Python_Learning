@@ -15,13 +15,11 @@
 - [**Herencia en Python**](#herencia-en-python)
 - [**Tabla de contenido**](#tabla-de-contenido)
 - [1. **¿Qué es la Herencia?**](#1-qué-es-la-herencia)
-  - [1.1. **`Ejemplo de Herencia`**](#11-ejemplo-de-herencia)
-- [2. **Sobreescritura (Override) del método `__str__`**](#2-sobreescritura-override-del-método-__str__)
-  - [2.1. **`Ejemplo de Herencia con sobreescritura del método __str__ y buenas practicas`**](#21-ejemplo-de-herencia-con-sobreescritura-del-método-__str__-y-buenas-practicas)
-      - [**¿Por qué no se encapsularón los atributos ni se declararón los métodos `getter` y `setter` en este ejemplo?**](#por-qué-no-se-encapsularón-los-atributos-ni-se-declararón-los-métodos-getter-y-setter-en-este-ejemplo)
-- [3. **¿Qué es la Herencia Múltiple?**](#3-qué-es-la-herencia-múltiple)
-  - [3.1. **`Ejemplo de Herencia Múltiple (no se usa el método super())`**](#31-ejemplo-de-herencia-múltiple-no-se-usa-el-método-super)
-- [4. **Método MRO "Method Resolution Order" (Orden de las clases)**](#4-método-mro-method-resolution-order-orden-de-las-clases)
+  - [1.1. ***Ejemplo de Herencia Simple***](#11-ejemplo-de-herencia-simple)
+  - [1.2. ***Ejemplo Avanzado de `Herecia Simple` usando métodos `build in`***](#12-ejemplo-avanzado-de-herecia-simple-usando-métodos-build-in)
+- [2. **¿Qué es la Herencia Múltiple?**](#2-qué-es-la-herencia-múltiple)
+  - [2.1. ***Ejemplo de `Herencia Múltiple` (no se usa el `método super()`)***](#21-ejemplo-de-herencia-múltiple-no-se-usa-el-método-super)
+- [3. **Método MRO `Method Resolution Order` (Orden de las clases)**](#3-método-mro-method-resolution-order-orden-de-las-clases)
 
 # 1. **¿Qué es la Herencia?**
 
@@ -35,7 +33,7 @@ La herencia es una de las características más importantes de la programación 
 <br>
 
 
-## 1.1. **`Ejemplo de Herencia`**
+## 1.1. ***Ejemplo de Herencia Simple***
 
 <p align="center">
   <img src="https://i.postimg.cc/vm73CxcY/imagen-2024-06-20-215046818.png" alt="Aquí va el texto del enlace" width="500">
@@ -81,108 +79,73 @@ print(empleado1.mostrar_salario())
 >
 > **Es crucial llamar al constructor de la clase base en la clase derivada utilizando la función `super()`**, para que los atributos de la clase base se inicialicen correctamente.
 
-# 2. **Sobreescritura (Override) del método `__str__`**
+## 1.2. ***Ejemplo Avanzado de `Herecia Simple` usando métodos `build in`***
 
-En Python, el método `__str__` se utiliza para sobrescribir **(*Override*)** la representación de cadena de un objeto. **Cuando se imprime un objeto, se llama automáticamente al método `__str__`**.
-
-**Archivo 1: persona.py**
+En este ejemplo se tiene una superclase llamada `Lista Simple` con el atributo de elementos de lista y varios métodos **build in** (métodos ya definidos en Python) de los cuales va heredar la subclase `Lista Ordenada` para ordenar los elementos de la lista. 
 
 ```python
 """ Clase padre """
-class Persona:
-    def __init__(self, nombre, edad):
-        self.nombre = nombre
-        self.edad = edad
+class ListaSimple:
+    def __init__(self, elementos):
+        self.elementos = list(elementos)
 
-    def __str__(self):
-        return f"Nombre: {self.nombre}, Edad: {self.edad}"
+    def agregar_elemento(self, elemento):
+        self.elementos.append(elemento)
+
+    def __getitem__(self, index):
+        return self.elementos[index]
+    
+    def sort (self):
+        self.elementos.sort()
+
+    def __len__(self):
+        return len(self.elementos)
+    
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.elementos})'
 
 """ Clase hija """
-class Empleado(Persona):
-    def __init__(self, nombre, edad, salario):
-        super().__init__(nombre, edad)
-        self.salario = salario
+class ListaOrdenada(ListaSimple):
+    def __init__(self, elementos):
+        super().__init__(elementos)
+        self.sort()
 
-    def __str__(self):
-        return f"{super().__str__()}, Salario: {self.salario}"
+    def agregar_elemento(self, elemento):
+        super().agregar_elemento(elemento)
+        self.sort()
 
-# Crear un objeto de la clase Empleado
-empleado1 = Empleado("Juan", 30, 5000)
-print(empleado1) # Nombre: Juan, Edad: 30, Salario: 5000
-```
-**Archivo 2: main.py**
+""" Segunda clase hija """
+class ListaEnteros(ListaSimple):
+    def __init__(self, elementos):
+        for elemento in elementos:
+            self._validar_elemento(elemento)
+        super().__init__(elementos)
+            
+    def _validar_elemento(self, elemento):
+        if not isinstance(elemento, int):
+            raise ValueError(f'El elemento {elemento} debe ser un entero')
+    
+    def agregar_elemento(self, elemento):
+        self._validar_elemento(elemento)
+        super().agregar_elemento(elemento)
 
-```python	
 
-from persona import *
+# Crear un objeto de la clase ListaOrdenada
+SimpleList = ListaSimple([4, 2, 1, 3])
+print(SimpleList) # Output: ListaSimple([4, 2, 1, 3])
+listSort = ListaOrdenada([4,3,6,9,10,-1])
+print(listSort) # Output: ListaOrdenada([-1, 3, 4, 6, 9, 10])
+listSort.agregar_elemento(5)
+print(listSort) # Output: ListaOrdenada([-1, 3, 4, 5, 6, 9, 10])
+print(len(listSort)) # Output: 7
 
-persona1 = Persona("Juan", 30)
-print(persona1) # Nombre: Juan, Edad: 30
-
-emple1 = Empleado("Pedro", 25, 4000)
-print(emple1) # Nombre: Pedro, Edad: 25, Salario: 4000
-```
-
-- En el ejemplo anterior, se sobrescribe el método `__str__` en las clases `Persona` y `Empleado` para personalizar la representación de cadena de los objetos al momento de importar el modulo `persona.py` en el archivo `main.py`.
-
-- Al imprimir los objetos `persona1` y `emple1`, se llama automáticamente al método `__str__` de cada clase.
-
-## 2.1. **`Ejemplo de Herencia con sobreescritura del método __str__ y buenas practicas`**
-
-Para este caso se tiene una superclase llamada **`Vehiculo`** con los atributos de `color` y `ruedas`, y sus metodos `__init__` y `__str__`, y dos subclases llamadas **`Coche`** con el atributo `velocidad` y tambien con sus metodos `__init__` y `__str__`, y **`Bicicleta`** con el atributo `tipo` y tambien con sus metodos `__init__` y `__str__`, los cuales heredan de la clase **`Vehiculo`**, tanto sus atributos como sus metodos.
-
-```python
-class Vehiculo:
-
-    def __init__(self, color, ruedas):
-        self.color = color
-        self.ruedas = ruedas
-
-    def __str__(self):
-        return f'Mi vehículo tiene: [Color: {self.color}, Ruedas: {self.ruedas}]'
-
-class Coche(Vehiculo):
-
-    def __init__(self, color, ruedas, velocidad):
-        super().__init__(color, ruedas)
-        self.velocidad = velocidad
-
-    def __str__(self):
-        return f'Mi coche tiene: [Color: {self.color}, Ruedas: {self.ruedas}, Velocidad: {self.velocidad} km/hr]'
-
-class Bicicleta(Vehiculo):
-
-    def __init__(self, color, ruedas, tipo):
-        super().__init__(color, ruedas)
-        self.tipo = tipo
-
-    def __str__(self):
-        return f'Mi bicicleta tiene: [Color: {self.color}, Ruedas: {self.ruedas}, Tipo: {self.tipo}]'
-
-# Creación de objeto de prueba
-Vehiculo1 = Vehiculo('Rojo', 4)
-print(Vehiculo1)
-print()
-Vehiculo2 = Coche('Azul', 4, 120)
-print(Vehiculo2)
-print()
-Vehiculo3 = Bicicleta('Verde', 2, 'Montaña')
-print(Vehiculo3)
+IntegerList = ListaEnteros([1, 12,1,33])
+print(IntegerList) # Output: ListaEnteros([1, 12, 1, 33])
 ```
 
-- De esta manera se puede ver como se puede sobrescribir el metodo `__str__` en las clases `Vehiculo`, `Coche` y `Bicicleta` para personalizar la representación de cadena de los objetos.
+- En el ejemplo anterior, la clase `ListaOrdenada` hereda de la clase `ListaSimple` y agrega un método `sort()` para ordenar los elementos de la lista. Posterirmente tambien se crea una subclase llamada `ListaEnteros` que hereda de la clase `ListaSimple` y agrega un metodo `_validar_elemento` para validar que los elementos de la lista sean enteros.
 
-#### **¿Por qué no se encapsularón los atributos ni se declararón los métodos `getter` y `setter` en este ejemplo?**
-
-Recapitulando, los métodos **`getters`** y **`setters`** **se utilizan principalmente para controlar el acceso a los atributos de una clase y para realizar validaciones o cálculos adicionales cuando se accede o se modifica un atributo**. Si no se necesita realizar ninguna validación o cálculo adicional, no hay necesidad de implementar métodos **`getters`** y **`setters`**.
-
-> [!TIP]
->
-> **La mejor práctica para este caso y un caso futuro, es diseñar siempre las clases de manera que sean fáciles de usar y de mantener**. Si en el futuro se necesita proteger los atributos o realizar validaciones o cálculos adicionales, si seria necesario agregar métodos **`getters`** y **`setters`** sin problemas. Sin embargo, si no se necesita hacerlo ahora, no hay necesidad de complicar el código agregando estos métodos innecesariamente.
---- 
-<br>
-
-# 3. **¿Qué es la Herencia Múltiple?**
+# 2. **¿Qué es la Herencia Múltiple?**
 
 <img align='right' width="350px" alt="coding web" src="https://i.postimg.cc/zfPJg92m/imagen-2024-06-21-220044137.png" style="margin-left: 20px;">
 
@@ -196,7 +159,7 @@ La herencia múltiple es una característica poderosa, pero también **puede ser
 
 <br>
 
-## 3.1. **`Ejemplo de Herencia Múltiple (no se usa el método super())`**
+## 2.1. ***Ejemplo de `Herencia Múltiple` (no se usa el `método super()`)***
 
 En este ejemplo se tiene principalmente una clase padre llamada **`FiguraGeometrica`** con los atributos `ancho` y `alto` de tipo privado con sus metodos `__init__` , `getter` y `setter`, otra clase padre llamada `Color` con el atributo `color` de tipo privado con sus metodos `__init__` , `getter` y `setter`, y una clase hija llamada **`Cuadrado`** que hereda de las clases `FiguraGeometrica` y `Color` y ademas tiene su atributo `lado` con sus metodos `__init__` , con el metodo `calcula_area`.
 
@@ -252,7 +215,7 @@ Class Cuadrado(FiguraGeometrica, Color):
 - Porque el cuadrado es una figura geometrica que tiene todos sus lados iguales, por lo tanto, el ancho y el alto son iguales, por lo que se paso el atributo `lado` como parametro en el metodo `__init__` de la clase `Cuadrado`.
 
 
-# 4. **Método MRO "Method Resolution Order" (Orden de las clases)**
+# 3. **Método MRO `Method Resolution Order` (Orden de las clases)**
 
 El **MRO** es el **orden en el que se buscan los métodos en las clases base** cuando se llama a un método en una clase derivada. En Python, el MRO se calcula utilizando el algoritmo **C3 Linearization**.
 

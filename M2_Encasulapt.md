@@ -16,12 +16,12 @@
 - [**Tabla de contenido**](#tabla-de-contenido)
 - [1. **¿Qué es el encapsulamiento?**](#1-qué-es-el-encapsulamiento)
 - [2. **Métodos `getter` y `setter`**](#2-métodos-getter-y-setter)
-  - [2.1. **`Método getter`**](#21-método-getter)
-    - [2.1.1 **`Variables de solo lectura`**](#211-variables-de-solo-lectura)
-  - [2.2. **`Método setter`**](#22-método-setter)
-  - [2.4. **`Encapsulamiento de atributos en un solo método getter y setter`**](#24-encapsulamiento-de-atributos-en-un-solo-método-getter-y-setter)
+  - [2.1. ***Método `getter`***](#21-método-getter)
+    - [2.1.1 **Variables de solo lectura**](#211-variables-de-solo-lectura)
+  - [2.2. ***Método `setter`***](#22-método-setter)
+  - [2.4. ***Encapsulamiento de atributos en un solo método `getter` y `setter`***](#24-encapsulamiento-de-atributos-en-un-solo-método-getter-y-setter)
 - [3. **Uso de `Módulos` y `Clases` en Python**](#3-uso-de-módulos-y-clases-en-python)
-- [4. **Destructor de objetos de una clase (práctica no tan común)**](#4-destructor-de-objetos-de-una-clase-práctica-no-tan-común)
+- [4. **Destructor de objetos de una clase método ` __del__` (práctica no tan común)**](#4-destructor-de-objetos-de-una-clase-método--__del__-práctica-no-tan-común)
 
 # 1. **¿Qué es el encapsulamiento?**
 
@@ -50,7 +50,7 @@ print(p.__nombre) # AttributeError: 'Persona' object has no attribute '__nombre'
 
 # 2. **Métodos `getter` y `setter`**
 
-## 2.1. **`Método getter`**
+## 2.1. ***Método `getter`***
 
 Es un método que se utiliza para **obtener el valor de un atributo de la clase**. En Python, se puede implementar un método `getter` utilizando la convención de nombres `@property`.
 
@@ -75,7 +75,7 @@ print(p.edad) # 25
 
 - En el ejemplo anterior, los métodos `get_nombre` y `get_edad` son métodos `getter` que permiten obtener el valor de los atributos `__nombre` y `__edad` respectivamente. 
 
-### 2.1.1 **`Variables de solo lectura`**
+### 2.1.1 **Variables de solo lectura**
 
 En Python, también es posible **crear atributos de solo lectura** utilizando únicamente el método `getter` y no el método `setter`. De esta forma, el atributo solo se puede leer y no se puede modificar.
 
@@ -101,7 +101,7 @@ print(p.edad) # 25
 
 - En el ejemplo anterior, los atributos `__nombre` y `__edad` son de solo lectura, ya que solo se ha implementado el método `getter` y no el método `setter`. Por lo tanto, **no se pueden modificar los valores de estos atributos**.
 
-## 2.2. **`Método setter`**
+## 2.2. ***Método `setter`***
 
 Es un método que se utiliza para **modificar el valor de un atributo de la clase**. En Python, se puede implementar un método `setter` utilizando la convención de nombres `@nombre.setter`.
 
@@ -142,7 +142,7 @@ print(p.edad) # 30
 
 
 
-## 2.4. **`Encapsulamiento de atributos en un solo método getter y setter`**
+## 2.4. ***Encapsulamiento de atributos en un solo método `getter` y `setter`***
 
 En Python, también es posible **encapsular varios atributos en un solo método `getter` y `setter`**. De esta forma, se puede acceder y modificar varios atributos a la vez.
 
@@ -184,7 +184,7 @@ if __name__ == '__main__':
     people.mostrar_detalle()
 ```
 
-# 4. **Destructor de objetos de una clase (práctica no tan común)**
+# 4. **Destructor de objetos de una clase método ` __del__` (práctica no tan común)**
 
 En Python, el método `__del__` es un método especial (`dunder method`) que se utiliza para **destruir un objeto de una clase**. Este método se llama automáticamente cuando el objeto ya no se necesita y se libera la memoria que ocupaba.
 
