@@ -20,10 +20,11 @@
 - [3. **¿Cómo se ve un archivo `JSON`?**](#3-cómo-se-ve-un-archivo-json)
   - [3.1. ***Visores online de archivos `JSON`***](#31-visores-online-de-archivos-json)
 - [4. **Manejo de archivos `JSON` en Python**](#4-manejo-de-archivos-json-en-python)
-  - [4.1. ***Lectura de archivos `JSON` mediante el método `load()`***](#41-lectura-de-archivos-json-mediante-el-método-load)
+  - [4.1. ***Lectura de archivos `JSON` mediante el método `loads()`***](#41-lectura-de-archivos-json-mediante-el-método-loads)
     - [4.1.1. **Usando la libreria `urllib` para leer un archivo `JSON` proveniente de una URL**](#411-usando-la-libreria-urllib-para-leer-un-archivo-json-proveniente-de-una-url)
     - [4.1.2. **Filtrar información de un archivo `JSON` a traves de un ciclo `for`**](#412-filtrar-información-de-un-archivo-json-a-traves-de-un-ciclo-for)
   - [4.2. ***Escritura de archivos `JSON` mediante el método `dump()`***](#42-escritura-de-archivos-json-mediante-el-método-dump)
+- [5. **Uso practico de la libreria `json` utilizando un archivo `JSON` de clima y obteniendo los datos mediante el método `get()`**](#5-uso-practico-de-la-libreria-json-utilizando-un-archivo-json-de-clima-y-obteniendo-los-datos-mediante-el-método-get)
 
 
 # 1. **¿Qué es `JSON`?**
@@ -94,7 +95,7 @@ Los archivos `JSON` (***JavaScript Object Notation***) **son un formato de inter
 import json
 ```
 
-## 4.1. ***Lectura de archivos `JSON` mediante el método `load()`***
+## 4.1. ***Lectura de archivos `JSON` mediante el método `loads()`***
 
 - **Para leer un archivo `JSON` en Python se puede utilizar el método `load()` de la librería `json` que permite cargar el contenido de un archivo `JSON` en un objeto de tipo `dict`.**
 
@@ -133,7 +134,7 @@ print(json_data)
   
   5. Se lee el contenido de la URL con la función `read()` que retorna el contenido de la URL en formato binario.
   
-  6. Posterioemente se parsea el contenido que se obtiene en formato binario a un formato `JSON` con la función `loads()` de la librería `json` que recibe como parámetro el contenido de la URL en formato binario y se decodifica a formato `utf-8`.
+  6. Posteriormente se parsea el contenido que se obtiene en formato binario a un formato `JSON` con la función `loads()` de la librería `json` que recibe como parámetro el contenido de la URL en formato binario y se decodifica a formato `utf-8`.
 
 ### 4.1.2. **Filtrar información de un archivo `JSON` a traves de un ciclo `for`**
 
@@ -183,3 +184,39 @@ print('Archivo JSON creado exitosamente')
 ```
 
 - En el código anterior se obtiene el contenido de la URL y se parsea el contenido que se obtiene en formato binario a un formato `JSON` para poder escribirlo en un archivo `JSON` con la función `dump()` de la librería `json` que recibe como parámetros el contenido `JSON`, el archivo donde se va a guardar, el formato `utf-8`, `ensure_ascii=False` para que no se escape los caracteres especiales y `indent=4` para que el archivo `JSON` tenga una identación de 4 espacios.
+
+# 5. **Uso practico de la libreria `json` utilizando un archivo `JSON` de clima y obteniendo los datos mediante el método `get()`**
+
+```python
+import json
+import urllib.request
+
+url = "http://globalmentoring.com.mx/api/clima.json"
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'}
+req = urllib.request.Request(url, data=None, headers=headers)
+
+# Obtener el contenido de la URL
+url = urllib.request.urlopen(req)
+body = url.read()
+print(body)
+
+# Parsear el contenido que se obtiene en formato binario a un formato JSON
+json_data = json.loads(body.decode("utf-8"))
+
+# Ejercicio 1: Acceder a la descripción del clima
+""" Segunda forma utilizando get 
+climate_descript = json_respuesta['clima'][0]['descripcion']
+ """
+
+""" rimera forma: sin utilizar get """
+descripcion_clima = json_respuesta.get('clima')[0].get('descripcion')
+print(f'Descripción clima: {climate_descript}') # Descripción clima: Pocas nubes
+
+# Ejercicio 2: Mostrar la temperatura mínima y máxima
+temp_min = json_respuesta.get('principal').get('temp_min')
+print(f'Temperatura mínima: {temp_min}') # Temperatura mínima: 11
+temp_max = json_respuesta.get('principal').get('temp_max')
+print(f'Temperatura máxima: {temp_max}') # Temperatura máxima: 23
+``` 
+
+- En el código anterior se obtiene el contenido de la URL y se parsea el contenido que se obtiene en formato binario a un formato `JSON` para poder acceder a la descripción del clima y a la temperatura mínima y máxima del clima.
